@@ -1,0 +1,138 @@
+<h1>Quickie SQL!</h1>
+
+---
+<h1>BigQuery</h1>
+
+<div class="logos">
+    <img src="/images/bigquery.png" />
+</div>
+---
+<h1>openaq</h1>
+
+
+    <img src="/images/openaq_schema.png" />
+
+---
+<h1>openaq</h1>
+
+    <img src="/images/openaq_preview.png" />
+
+---
+<h1>openaq</h1>
+
+<div class="split">
+    <web-browser src="https://openaq.org/#/map"></web-browser>
+</div>
+
+---
+<h1>Where</h1>
+<h2>
+        demande : je voudrais avoir les valeurs <em>pm10</em> en <em>France</em> et que l'<em>information ne date pas de plus de deux jours</em>
+</h2>
+--- 
+<h1>Where</h1>
+<div class="split">
+    <source-code folder="queries"
+        files="1_where.sql"
+        start-lines="10"
+        end-lines="12">
+    </source-code>
+    <web-term path="queries"></web-term>
+</div>
+
+---
+
+<h1>Group et Aggregate functions</h1>
+<h2>
+        demande : je voudrais avoir les <em>valeurs moyennes par city</em> ainsi que <em>la liste de toutes les valeurs</em> des pm10 en France et que l'information ne date pas de plus de deux jours
+</h2>
+--- 
+<h1>Group et Aggregate functions</h1>
+<div class="split">
+    <source-code folder="queries"
+        files="2_agg.sql"
+        start-lines="3,11"
+        end-lines="4,11">
+    </source-code>
+    <web-term path="queries"></web-term>
+</div>
+
+---
+
+<h1>Selective Aggregates</h1>
+<h2>
+    demande : je voudrais avoir les valeurs moyennes par city des pm10 <em>et des pm2.5</em> en France et que l'information ne date pas de plus de deux jours
+</h2>
+--- 
+<h1>Selective Aggregates</h1>
+<div class="split">
+    <source-code folder="queries"
+        files="3_selective_agg.sql"
+        start-lines="4,9"
+        end-lines="5,9">
+    </source-code>
+    <web-term path="queries"></web-term>
+</div>
+
+---
+
+<h1>Having</h1>
+<h2>
+    demande : je voudrais avoir les valeurs moyennes par city des pm10 en France et que l'information ne date pas de plus de deux jours <em>pour toutes les city ayant une valeur supérieure à 25</em>
+</h2>
+--- 
+<h1>Having</h1>
+<div class="split">
+    <source-code folder="queries"
+        files="4_having.sql"
+        start-lines="11"
+        end-lines="11">
+    </source-code>
+    <web-term path="queries"></web-term>
+</div>
+
+---
+<h1>Window functions</h1>
+<h2>
+    demande : je voudrais avoir les valeurs pm10 en France et que l'information ne date pas de plus de deux jours <em>ainsi que la moyenne nationale, la moyenne de la city en question et la position de cette city dans le classement des cities les plus polluées</em>
+</h2>
+---
+<h1>Window functions</h1>
+<div class="split">
+    <source-code folder="queries"
+        files="5_window_functions.sql"
+        start-lines="4"
+        end-lines="6">
+    </source-code>
+    <web-term path="queries"></web-term>
+</div>
+
+---
+<h1>Window functions</h1>
+<h2 style="text-align: left">
+        demande : je voudrais les avoir...<br />
+        - groupées par city<br />
+        - la position de ce groupe dans le classement des groupes les plus polluées<br />
+        - la valeur moyenne de ce groupe<br />
+        - la plus petite et la plus grande valeur de ce groupe<br />
+        - la variation par rapport au groupe précédent<br />
+        - et combien de fois ce groupe est plus pollué que le moins pollué  
+</h2>
+---
+<h1>Window functions</h1>
+<div class="split">
+    <source-code folder="queries"
+        files="6_window_functions.sql"
+        start-lines=""
+        end-lines="">
+    </source-code>
+    <web-term path="queries"></web-term>
+</div>
+
+---
+
+<h1>Voilà !</h1>
+
+<h2>Des questions ? 🍻</h2>
+
+<h2>Merci à David Gageot pour DemoIt <a>https://github.com/dgageot/demoit<a></h2>
