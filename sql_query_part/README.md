@@ -1,16 +1,5 @@
 # Quickie SQL - Get Some Data - Query part
 
-
-TODO : 
-
-- ameliorer intro 
-  - presenter openAQ
-    - derniere valeur relevé
-- merger aggregate slides
-
-passer plus vite au début 
-
-
 ---
 
 ## Dataset
@@ -21,7 +10,7 @@ passer plus vite au début
 
 ## Where
 
-> demande : je voudrais avoir les valeurs **pm10** en **france** et que l'**information ne date pas de plus de deux jours** 
+> demande : je voudrais avoir les valeurs **pm10** en **france** et que l'**information ne date pas de plus de deux jours**
 
 ![cat where image](https://media.giphy.com/media/iTOS89Y0gD1ny/giphy.gif)
 
@@ -38,8 +27,8 @@ select
 from
   \`bigquery-public-data.openaq.global_air_quality\`
 where
-  pollutant = 'pm10' 
-  and country='FR' 
+  pollutant = 'pm10'
+  and country='FR'
   and cast(timestamp as date) > date_sub(current_date, interval 2 DAY)
 ```
 
@@ -47,7 +36,7 @@ where
 
 ## Group et Aggregate functions
 
-> demande : je voudrais avoir les **valeurs moyennes par city ainsi que la liste de toutes les valeurs** des pm10 en france et que l'information ne date pas de plus de deux jours 
+> demande : je voudrais avoir les **valeurs moyennes par city ainsi que la liste de toutes les valeurs** des pm10 en france et que l'information ne date pas de plus de deux jours
 
 ![cat aggregate image](https://media.giphy.com/media/UotLuplZSzKRa/200w.webp)
 
@@ -62,10 +51,10 @@ select
 from
   \`bigquery-public-data.openaq.global_air_quality\`
 where
-  pollutant = 'pm10' 
-  and country='FR' 
+  pollutant = 'pm10'
+  and country='FR'
   and cast(timestamp as date) > date_sub(current_date, interval 2 DAY)
-group by 
+group by
   city, pollutant
 ```
 
@@ -73,7 +62,7 @@ group by
 
 ## Aggregate functions - Selective Aggregates
 
-> demande : je voudrais avoir les valeurs moyennes par city des pm10 **et des pm2.5** en france et que l'information ne date pas de plus de deux jours 
+> demande : je voudrais avoir les valeurs moyennes par city des pm10 **et des pm2.5** en france et que l'information ne date pas de plus de deux jours
 
 
 ![cat aggreage 2 image](https://media.giphy.com/media/WFGwTDeEtcbL2/giphy.gif)
@@ -90,10 +79,10 @@ select
 from
   \`bigquery-public-data.openaq.global_air_quality\`
 where
-  pollutant in('pm10', 'pm25') 
-  and country='FR' 
+  pollutant in('pm10', 'pm25')
+  and country='FR'
   and cast(timestamp as date) > date_sub(current_date, interval 2 DAY)
-group by 
+group by
   city
 order by city asc
 ```
@@ -117,14 +106,14 @@ select
 from
   \`bigquery-public-data.openaq.global_air_quality\`
 where
-  pollutant = 'pm10' 
-  and country='FR' 
+  pollutant = 'pm10'
+  and country='FR'
   and cast(timestamp as date) > date_sub(current_date, interval 2 DAY)
-group by 
+group by
   city, pollutant
-having 
+having
   avg(value) > 25
-order by 
+order by
   average desc
 ```
 
@@ -152,10 +141,10 @@ select
 from
   \`bigquery-public-data.openaq.global_air_quality\`
 where
-  pollutant = 'pm10' 
-  and country='FR' 
+  pollutant = 'pm10'
+  and country='FR'
   and cast(timestamp as date) > date_sub(current_date, interval 2 DAY)
-order by 
+order by
   rank asc
 ```
 
@@ -163,13 +152,13 @@ order by
 
 ## Et pour le fun
 
-> demande : je voudrais les avoir...  
-\- groupé par city  
-\- la position de ce groupe dans le classement des groupes les plus polluées  
-\- la valeur moyenne de ce groupe  
-\- la plus petite et la plus grande valeur de e groupe  
-\- la variation par rapport au groupe précédent  
-\- et combien de fois ce groupe est plus pollué que le moins pollué    
+> demande : je voudrais les avoir...
+\- groupé par city
+\- la position de ce groupe dans le classement des groupes les plus polluées
+\- la valeur moyenne de ce groupe
+\- la plus petite et la plus grande valeur de e groupe
+\- la variation par rapport au groupe précédent
+\- et combien de fois ce groupe est plus pollué que le moins pollué
 
 ![cat jump image](https://media.giphy.com/media/9eesIL98bUali/giphy.gif)
 
@@ -192,10 +181,10 @@ select
 from
   \`bigquery-public-data.openaq.global_air_quality\`
 where
-  pollutant = 'pm10' 
-  and country='FR' 
+  pollutant = 'pm10'
+  and country='FR'
   and cast(timestamp as date) > date_sub(current_date, interval 2 DAY)
 group by city
-order by 
+order by
   rank asc
 ```
